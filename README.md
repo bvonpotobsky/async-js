@@ -1,6 +1,6 @@
 ### Welcome to the Async JavaScript repository.
 
-This is a repository of the Async Javascript Series of [Ania Kubów]('https://www.youtube.com/watch?v=wdvruTuWvW8').
+This is a repository of the Async Javascript Series of [Ania Kubów](https://www.youtube.com/watch?v=wdvruTuWvW8).
 
 I recommend it for anyone who wants a better understanding of how XMLHttpRequest, callbacks, promises and async/await works.
 
