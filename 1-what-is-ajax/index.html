@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax</title>
+  </head>
+  <body>
+    <style>
+      button {
+        display: block;
+        margin: 0 auto;
+        width: 10rem;
+        height: 2rem;
+      }
+    </style>
+
+    <button onclick="showCountries()">Show Countries</button>
+    <div id="feed"></div>
+
+    <script>
+      const API = "https://restcountries.eu/rest/v2/";
+      const feed = document.getElementById("feed");
+
+      function showCountries() {
+        // Call XMLHttpRequest Object and store it in a variable
+        let xhr = new XMLHttpRequest();
+        // Get the data with the method OPEN
+        // xhr.open(requestType, API_URL, true); // true means the petition is async
+        xhr.open("GET", API, true);
+
+        // Whe data is loaded, do what the callback function says
+        xhr.onload = function () {
+          // If request is ok === 200, do next
+          if (xhr.status === 200) {
+            const countries = JSON.parse(this.response);
+            countries.forEach((country) => {
+              const countryCard = document.createElement("div");
+              const countryCardImg = document.createElement("img");
+
+              countryCard.innerHTML = country.name;
+              countryCardImg.src = country.flag;
+              countryCardImg.width = 200;
+              countryCardImg.style.display = "block";
+
+              countryCard.appendChild(countryCardImg);
+              feed.appendChild(countryCard);
+            });
+          }
+        };
+        // Send the request
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>
